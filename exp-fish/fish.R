@@ -18,7 +18,7 @@ parser$add_argument("--alpha", type="double", default=0.2, help="miscoverage")
 parser$add_argument("--save", type="logical", default=TRUE, help="save")
 parser$add_argument("--seed", type = "double", default = 1, help = "random seed")
 parser$add_argument("--ntrial", type = "integer", default = 50, help = "number of trials")
-parser$add_argument("--path", type = "character", default = '/proj/sml_netapp/projects/claudia/conformal/fish/', help = "save location")
+parser$add_argument("--path", type = "character", default = './res/fish', help = "save location")
 
 args <- parser$parse_args()
 alpha <- args$alpha
@@ -33,8 +33,14 @@ q<- c(alpha/2, 1- (alpha/2))
 ##---------------------------------------------------------------
 ##      loading observed data and pre-processing               -
 ##---------------------------------------------------------------
+path <- "/Users/linyingzhang/git/zhangly811/Conformal-sensitivity-analysis/exp-fish/res/"
+gmm_star <- 3
+alpha <- 0.2
+ntrial <- 50
+save <- TRUE
+seed <- 1
 
-load('./data/fish.Rda')
+load('/Users/linyingzhang/git/zhangly811/Conformal-sensitivity-analysis/exp-fish/data/fish.Rda')
 A <- as.numeric(nhanes.fish$fish.level == "high")
 X <- nhanes.fish[, c("gender", "age", "income", "income.missing", "race", "education", "smoking.ever", "smoking.now")]
 X$race <- factor(X$race)

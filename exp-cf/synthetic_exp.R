@@ -122,7 +122,7 @@ for (trial in 1:ntrial){
   Xtest <- Xfun(ntest,d)
   pstest <- pscorefun(Xtest)
   Ttest <- as.numeric(runif(ntest)<pstest)
-
+  # interval sharpness (may not need)
   ci_mean <- shrink(predict.conformalmsm(obj_mean, Xtest,alpha = alpha),fc=fct)
   ci_cqr <- shrink(predict.conformalmsm(obj_cqr, Xtest,alpha = alpha),fc=fct)
   ci_ite <- shrink(predict(obj_ite, Xtest, alpha = alpha),fc=fct)
